@@ -1,0 +1,11 @@
+---
+- name: Using the copy module
+  hosts: localhost
+  become: yes
+  tasks:
+   - name: Give sudo access to devops user
+     blockinfile:
+        path: /etc/sudoers
+        insertafter: 'root    ALL=(ALL)       ALL'
+        block: |
+          %devops        ALL=(ALL)       NOPASSWD: ALL
